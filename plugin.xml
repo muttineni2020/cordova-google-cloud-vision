@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-vision-api"
+    version="1.1.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <name>Vision API</name>
+    <author>Nani</author>
+
+    <keywords>ecosystem:cordova, ecosystem:phonegap, mobile, android, ios, android-keystore, ios-keychain, sensitive-data-security, public-private-key, encryption-decryption</keywords>
+
+    <js-module name="GoogleVision" src="www/GoogleVision.js">
+        <clobbers target="cordova.plugins.vision" />
+    </js-module>
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="GoogleVision">
+                <param name="android-package" value="com.google.vision.GoogleVision" />
+            </feature>
+        </config-file>
+        <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference"/>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="src/android/GoogleVision.java" target-dir="src/com/google/vision/GoogleVision" />
+        <source-file src="src/android/PackageUtility.java" target-dir="src/com/google/vision/PackageUtility" />
+    </platform>
+</plugin>
